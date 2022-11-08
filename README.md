@@ -9,7 +9,9 @@ Sign Up Page with React:
 
 
 Database Connection:
+
 ![image](https://user-images.githubusercontent.com/107481123/200592390-e2949937-c465-4337-bd78-76d6197519c7.png)
 
 Java Spring Boot for Sign Up:
+
 ![image](https://user-images.githubusercontent.com/107481123/200592710-c125ba82-a171-410a-bf9f-6aaddbf138d7.png)
