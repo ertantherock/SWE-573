@@ -4,7 +4,9 @@
 <p>Every week this repo will be updated according to <b>class requirement.</b></p>
 <p>In the first week requirements: I have created new wiki page, created new issue and customized issue tags.</p>
 Sign Up Page with React:
-![image](https://user-images.githubusercontent.com/107481123/200592196-d9184828-4778-4a3c-ac34-551f6d1f8f09.png)
+
+![image](https://user-images.githubusercontent.com/107481123/200592941-09b9ea44-3e6c-42bd-b9a3-2cc77eb612ed.png)
+
 
 Database Connection:
 ![image](https://user-images.githubusercontent.com/107481123/200592390-e2949937-c465-4337-bd78-76d6197519c7.png)
