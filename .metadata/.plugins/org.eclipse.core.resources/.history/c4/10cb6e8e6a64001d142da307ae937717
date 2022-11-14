@@ -1,0 +1,5 @@
+package com.ePocket.ws.user;
+
+public class UserService {
+
+}

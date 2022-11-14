@@ -1,0 +1,15 @@
+package com.ePocket.ws.user;
+
+import org.springframework.stereotype.Service;
+
+@Service // Service layer for users. Layered arc.
+public class UserService {
+	
+	UserRepository userRepository;
+
+	public void save(User user) {
+		userRepository.save(user);
+		
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.ePocket.ws.user;
+
+import org.springframework.stereotype.Service;
+
+
+//Layered Structure
+@Service
+public class UserService {
+
+}

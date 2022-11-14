@@ -1,0 +1,5 @@
+package com.ePocket.ws.shared;
+
+public class ResponseGeneric {
+
+}
