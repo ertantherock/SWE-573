@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { signup, signUpAPI} from '../allAPI/apis'
 
 
 class UserSignupPage extends React.Component{
@@ -7,7 +8,8 @@ state= {
     userName:null,
     displayName: null,
     password: null,
-    rePassword: null
+    rePassword: null,
+    pendedApiCall: false
 };
 
 onChange= event => {
@@ -25,8 +27,16 @@ onClickSignup = event => {
         userName :this.state.userName,
         displayName: this.state.displayName,
         password: this.state.password
-    }
-    axios.post('/api/1.0/users', body) // package.jsonda proxy configurating for spring localhost:8080
+    };
+    this.setState({pendedApiCall: true})
+
+   signUpAPI(body) // package.jsonda proxy configurating for spring localhost:8080
+        .then((response) => {
+            this.setState({pendedApiCall: false})
+
+        }).catch(error => {
+            this.setState({pendedApiCall: false}) //fail response alırsa çalışacak.
+        });
 }
 
 
@@ -57,7 +67,10 @@ onClickSignup = event => {
                     </div>
                     <br></br>
                     <div className='text-center'>
-                    <button className="btn btn-success btn-lg active" role="button" aria-pressed="true" onClick={this.onClickSignup}>Sign Up</button>
+                    <button className="btn btn-success btn-lg active" role="button" aria-pressed="true" onClick={this.onClickSignup}
+                    disabled={this.state.pendedApiCall}>Sign Up
+                    {this.state.pendedApiCall ? <span className="spinner-grow spinner-grow-sm" ></span> : "" }
+                    </button>
                     </div>
                     
                 </form>
