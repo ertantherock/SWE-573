@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import HomePage from './allPages/HomePage';
+import UserPage from './allPages/UserPage';
 
 function App() {
   return (

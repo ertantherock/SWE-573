@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {login} from '../allAPI/apis'
 class LoginPage extends React.Component {
  state = {
     username: null,
@@ -13,7 +13,17 @@ onChange = event => {
     })
 }
     
+onClickLogin = event => { // tarayıcının default Form Submit etme özelliğini kapatıyoruz. 
+    event.preventDefault();
+    const { username, password } = this.state;
+    const credentials = {
+        username,
+        password
+    }
+
     
+    login(credentials)
+}    
     
     
     render() {
@@ -35,7 +45,7 @@ onChange = event => {
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
                     <div className='text-center'>
-                    <button type="submit" className="btn btn-primary ">Submit</button>
+                    <button type="submit" className="btn btn-primary " onClick={this.onClickLogin}>Login</button>
                     </div>
                     </form>
             </div>
