@@ -1,28 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react';
+import UserSignupPage from './allPages/UserSignUpPage';
+import LoginPage from './allPages/LoginPage';
 import HomePage from './allPages/HomePage';
+import TopBar from './Components/TopBar';
 import UserPage from './allPages/UserPage';
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> selam ben geldim aq sonunda.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <TopBar />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={UserSignupPage} />
+          <Route path="/user/:username" component={UserPage} />
+          <Redirect to="/" />
+        </Switch>
+      </Router>
+  
     </div>
   );
 }
-
 export default App;

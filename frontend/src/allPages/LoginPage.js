@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {login} from '../allAPI/apis'
+import App from '../App';
+
 class LoginPage extends React.Component {
  state = {
     username: null,
