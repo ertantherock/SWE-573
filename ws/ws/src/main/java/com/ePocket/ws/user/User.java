@@ -10,6 +10,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.ePocket.ws.shared.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import lombok.Data;
 
 @Table(name="Users")
@@ -24,8 +28,9 @@ public class User {
 	@NotNull
 	@Size(min = 4, max = 255)
 	@EssizUserNameAnnotation
-	@Column(name="userName")
-	private String userName;
+	@JsonView(Views.Base.class)
+	@Column(name="username")
+	private String username;
 	
 	@NotNull
 	@Size(min=8, max=255)
@@ -34,9 +39,11 @@ public class User {
 	
 	@NotNull
 	@Size(min=8, max=255)
-	@Column(name="password")
+	@Column(name="password")	
 	private String password;
 	
+	
+	@JsonView(Views.Base.class)
 	private String image;
 	
 	

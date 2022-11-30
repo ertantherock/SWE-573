@@ -17,20 +17,16 @@ public class WsApplication {
 	}
 
 	@Bean
-	CommandLineRunner createInitialUser(UserService userService) {
-		return new CommandLineRunner() {
-
-			@Override
-			public void run(String... args) throws Exception {
-				User user = new User();
-				user.setUserName("kullanıcı1");
-				user.setMail("ertancank");
-				user.setPassword("sifre123");
-				userService.save(user);
-
-			}
+	CommandLineRunner createInitialUsers(UserService userService) {
+		return (args) -> {
+			User user = new User();
+			user.setUsername("kullanıcı1");
+			user.setMail("ertancank@gmail.com");
+			user.setPassword("sifre123");
+			userService.save(user);
 		};
+	}
 
 	}
 
-}
+

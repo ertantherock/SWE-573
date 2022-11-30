@@ -37,12 +37,12 @@ public class UserController {
 		Map<String, String> validationErrors = new HashMap<>();
 
 		
-		String userName = user.getUserName();
+		String username = user.getUsername();
 		String mail = user.getMail();
 		String password = user.getPassword();
 		
-		if(userName == null  || userName.isEmpty()) {
-			validationErrors.put("userName", "userName cannot be null");
+		if(username == null  || username.isEmpty()) {
+			validationErrors.put("username", "username cannot be null");
 			
 			
 			

@@ -12,8 +12,8 @@ public class EssizUserNameValidation implements ConstraintValidator<EssizUserNam
 	
 	
 	@Override
-	public boolean isValid(String userName, ConstraintValidatorContext context) {
-		User user = userRepository.findByUserName(userName); //User repositoryde findByUsername fonksiyonunu kullandık.
+	public boolean isValid(String username, ConstraintValidatorContext context) {
+		User user = userRepository.findByUsername(username); //User repositoryde findByUsername fonksiyonunu kullandık.
 		//user clasında da usernameleri match edip eğer username varsa false döndüreceğüz.
 		
 		if(user != null) {
