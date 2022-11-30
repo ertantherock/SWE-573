@@ -1,44 +1,48 @@
 import React from 'react';
-import axios from 'axios';
+
 import { signup, signUpAPI} from '../allAPI/apis'
-import App from '../App';
 
 
 class UserSignupPage extends React.Component{
 state= {
     userName:null,
-    displayName: null,
+    mail: null,
     password: null,
     rePassword: null,
-    pendedApiCall: false
+    pendedApiCall: false,
+    errors: {}
 };
 
 onChange= event => {
-    const value = event.target.value;
-    const field = event.target.name;
-
+    const {name, value} = event.target;
+    
+    const errors = {...this.state.errors}
+    errors[name] = undefined
     this.setState({
-        [field]: value
+        [name]: value,
+        errors
     })
 }
-onClickSignup = event => {
+onClickSignup = async event => {
     event.preventDefault();
 
     const body = {
         userName :this.state.userName,
-        displayName: this.state.displayName,
+        mail: this.state.mail,
         password: this.state.password
     };
-    this.setState({pendedApiCall: true})
+    this.setState({pendedApiCall: true});
+    
 
-   signUpAPI(body) // package.jsonda proxy configurating for spring localhost:8080
-        .then((response) => {
-            this.setState({pendedApiCall: false})
-
-        }).catch(error => {
-            this.setState({pendedApiCall: false}) //fail response alırsa çalışacak.
-        });
-}
+    try {
+        const response = await signUpAPI(body); // package.jsonda proxy configurating for spring localhost:8080
+    } catch(error) {
+        if( error.response.data.validationErrors)
+         this.setState({errors: error.response.data.validationErrors})   
+    }
+    this.setState({pendedApiCall: false});
+        
+};
 
 
 
@@ -46,21 +50,34 @@ onClickSignup = event => {
 
 
     render(){
+
+        const { pendedApiCall, errors} = this.state;
+        const {userName, mail, rePass ,password} = errors;
+
         return(
             <div className='container inline-flex p-2'>            
                 <form>
                     <h1 className='text-center '> Sign Up</h1>
                     <div className='form-group'>
                         <label>User name</label>
-                        <input placeholder="Enter User Name" className='form-control' name="userName" onChange={this.onChange} />
+                        <input placeholder="Enter User Name" className={userName ? 'form-control is-invalid' : "form-control"} name="userName" onChange={this.onChange} />
+                        <div className="invalid-feedback">
+                        {userName}
+                        </div>
                     </div>
                     <div>
                         <label for="exampleFormControlInput1">Email Adress</label>
-                        <input  type='email' placeholder="name@example.com" className='form-control' name="displayName" onChange={this.onChange} />
+                        <input  type='email' placeholder="name@example.com" className={mail ? 'form-control is-invalid' : "form-control"} name="mail" onChange={this.onChange} />
+                        <div className="invalid-feedback">
+                        {mail}
+                        </div>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input placeholder="Enter Password" className='form-control' name='password' type="password" onChange={this.onChange}/>
+                        <input placeholder="Enter Password" className={password ? 'form-control is-invalid' : "form-control"} name='password' type="password" onChange={this.onChange}/>
+                        <div className="invalid-feedback">
+                        {password}
+                        </div>
                     </div>
                     <div>
                         <label>Re-password</label>

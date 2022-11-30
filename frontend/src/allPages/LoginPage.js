@@ -4,7 +4,7 @@ import App from '../App';
 
 class LoginPage extends React.Component {
  state = {
-    username: null,
+    userName: null,
     password: null
  }   
 
@@ -15,17 +15,27 @@ onChange = event => {
     })
 }
     
-onClickLogin = event => { // tarayıcının default Form Submit etme özelliğini kapatıyoruz. 
+onClickLogin = async event => { // tarayıcının default Form Submit etme özelliğini kapatıyoruz. 
     event.preventDefault();
-    const { username, password } = this.state;
+    const { userName, password } = this.state;
     const credentials = {
-        username,
+        userName,
         password
+    };
+    this.setState({
+        error: null
+    });
+    try {
+        await login(credentials);
+        this.props.history.push('/')
+    } catch (apiError) {
+        this.setState({
+            error: apiError.response.data.message
+        });
     }
-
     
-    login(credentials)
-}    
+}
+   
     
     
     render() {
@@ -35,8 +45,8 @@ onClickLogin = event => { // tarayıcının default Form Submit etme özelliğin
                     <form>
                     <div class="form-group">
                         <label >User Name</label>
-                        <input name= 'username'  className="form-control" placeholder="Enter Username" onChange={this.onChange}/>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <input name= 'userName'  className="form-control" placeholder="Enter userName" onChange={this.onChange}/>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your personal information with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>

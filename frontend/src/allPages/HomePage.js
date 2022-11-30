@@ -3,7 +3,7 @@ import App from '../App';
 
 const HomePage = () => {
     return (
-        <div className='conteiner'>
+        <div className='container'>
             Homepage
         </div>
     );
