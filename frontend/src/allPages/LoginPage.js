@@ -4,37 +4,33 @@ import App from '../App';
 
 class LoginPage extends React.Component {
  state = {
-    userName: null,
+    username: null,
     password: null
- }   
+ };  
 
-onChange = event => {
-    const { name, value} = event.target;
-    this.setState({
-        [name]: value
-    })
-}
-    
-onClickLogin = async event => { // tarayıcının default Form Submit etme özelliğini kapatıyoruz. 
-    event.preventDefault();
-    const { userName, password } = this.state;
-    const credentials = {
-        userName,
-        password
-    };
-    this.setState({
-        error: null
-    });
-    try {
-        await login(credentials);
-        this.props.history.push('/')
-    } catch (apiError) {
+    onChange = event => {
+        const { name, value} = event.target;
         this.setState({
-            error: apiError.response.data.message
+            [name]: value
         });
-    }
-    
-}
+    };
+        
+    onClickLogin = async event => {
+        event.preventDefault();
+        const { username, password } = this.state;
+        const creds = {
+            username,
+            password
+        };
+        try {
+            await login(creds);
+            this.props.history.push('/')
+        } catch (apiError) {
+            this.setState({
+                error: apiError.response.data.message
+            });
+        }
+    };
    
     
     
@@ -45,7 +41,7 @@ onClickLogin = async event => { // tarayıcının default Form Submit etme özel
                     <form>
                     <div class="form-group">
                         <label >User Name</label>
-                        <input name= 'userName'  className="form-control" placeholder="Enter userName" onChange={this.onChange}/>
+                        <input name= 'username'  className="form-control" placeholder="Enter username" onChange={this.onChange}/>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your personal information with anyone else.</small>
                     </div>
                     <div class="form-group">

@@ -5,7 +5,7 @@ import { signup, signUpAPI} from '../allAPI/apis'
 
 class UserSignupPage extends React.Component{
 state= {
-    userName:null,
+    username:null,
     mail: null,
     password: null,
     rePassword: null,
@@ -27,7 +27,7 @@ onClickSignup = async event => {
     event.preventDefault();
 
     const body = {
-        userName :this.state.userName,
+        username :this.state.username,
         mail: this.state.mail,
         password: this.state.password
     };
@@ -52,7 +52,7 @@ onClickSignup = async event => {
     render(){
 
         const { pendedApiCall, errors} = this.state;
-        const {userName, mail, rePass ,password} = errors;
+        const {username, mail, rePass ,password} = errors;
 
         return(
             <div className='container inline-flex p-2'>            
@@ -60,9 +60,9 @@ onClickSignup = async event => {
                     <h1 className='text-center '> Sign Up</h1>
                     <div className='form-group'>
                         <label>User name</label>
-                        <input placeholder="Enter User Name" className={userName ? 'form-control is-invalid' : "form-control"} name="userName" onChange={this.onChange} />
+                        <input placeholder="Enter User Name" className={username ? 'form-control is-invalid' : "form-control"} name="username" onChange={this.onChange} />
                         <div className="invalid-feedback">
-                        {userName}
+                        {username}
                         </div>
                     </div>
                     <div>
