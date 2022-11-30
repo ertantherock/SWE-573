@@ -15,24 +15,22 @@ public class WsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WsApplication.class, args);
 	}
-	
+
 	@Bean
 	CommandLineRunner createInitialUser(UserService userService) {
 		return new CommandLineRunner() {
-			
+
 			@Override
 			public void run(String... args) throws Exception {
 				User user = new User();
 				user.setUserName("kullanıcı1");
-				user.setDisplayName("mail");
-				user.setPassword("Sifre");
+				user.setMail("ertancank");
+				user.setPassword("sifre123");
 				userService.save(user);
-				
+
 			}
 		};
-		
-		
+
 	}
-	
 
 }

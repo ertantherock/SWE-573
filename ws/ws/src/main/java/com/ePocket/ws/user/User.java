@@ -23,15 +23,17 @@ public class User {
 	
 	@NotNull
 	@Size(min = 4, max = 255)
+	@EssizUserNameAnnotation
 	@Column(name="userName")
 	private String userName;
 	
 	@NotNull
 	@Size(min=8, max=255)
-	@Pattern(regexp ="(.*)(\\d+)(.*)" )
-	@Column(name="displayName")
-	private String displayName;
+	@Column(name="mail")
+	private String mail;
 	
+	@NotNull
+	@Size(min=8, max=255)
 	@Column(name="password")
 	private String password;
 	

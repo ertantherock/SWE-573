@@ -20,47 +20,46 @@ import com.ePocket.ws.user.UserRepository;
 
 @RestController
 public class AuthController {
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
-	PasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
-	
-	
+
+	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 	@PostMapping("/api/1.0/auth")
-	ResponseEntity<?> handleAuthentication(@RequestHeader (name="Authorization", required = false) String authorization) {
-		if(authorization == null) {
+	ResponseEntity<?> handleAuthentication(
+			@RequestHeader(name = "Authorization", required = false) String authorization) {
+		if (authorization == null) {
 			ApiError error = new ApiError(401, "Unauthorized Request", "/api/1.0/auth");
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
 		}
-		String base64encoded = authorization.split("Basic ")[1]; //Encoded part
-		String decoded = new String(Base64.getDecoder().decode(base64encoded)); //Decoded part of password.
-		String[] parts = decoded.split(":"); //["kullanıcı1", "Sifre"]
-		String username = parts[0];
+		String base64encoded = authorization.split("Basic ")[1]; // Encoded part
+		String decoded = new String(Base64.getDecoder().decode(base64encoded)); // Decoded part of password.
+		String[] parts = decoded.split(":"); // ["kullanıcı1", "Sifre"]
+		String userName = parts[0];
 		String password = parts[1];
-		User inDB = userRepository.findByUsername(username);
-		if (inDB== null) {
-			ApiError error = new ApiError(401, "Unauthorized Request", "/api/1.0/auth");
+		User inDB = userRepository.findByUserName(userName);
+		if (inDB == null) {
+			ApiError error = new ApiError(403, "Kullanıcı nasıl bulunamaz", "/api/1.0/auth");
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
-			
+
 		}
-		
+
 		String hashedPassword = inDB.getPassword();
 		if (!passwordEncoder.matches(password, hashedPassword)) {
-			ApiError error = new ApiError(401, "Unauthorized Request", "/api/1.0/auth");
+			ApiError error = new ApiError(402, "Password couldnt match", "/api/1.0/auth");
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
 
 		}
 //		
-//		//username, displayName, image
+//		//userName, displayName, image
 //		Map<String, String> responseBody = new HashMap<>();
-//		responseBody.put("username", inDB.getUserName());
-//		responseBody.put("username", inDB.getDisplayName());
-//		responseBody.put("username", inDB.getImage());
+//		responseBody.put("userName", inDB.getuserName());
+//		responseBody.put("userName", inDB.getDisplayName());
+//		responseBody.put("userName", inDB.getImage());
 //		
- 		return ResponseEntity.ok().build();
-		
+		return ResponseEntity.ok().build();
+
 	}
-	
 
 }
