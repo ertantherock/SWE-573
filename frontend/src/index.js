@@ -3,10 +3,15 @@ import App from './App';
 import React, { Component }  from 'react';
 import './index.css';
 import LoginPage from './allPages/LoginPage';
+import ContextAuth from './sharedAPI/ContextAuth';
 
 
 
 
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+ReactDOM.render(
+    <ContextAuth>
+        <App />
+    </ContextAuth>
+, document.getElementById('root'));
+

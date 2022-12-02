@@ -3,7 +3,7 @@ import App from '../App';
 
 const UserPage = () => {
     return (
-        <div className='conteiner'>
+        <div className='container'>
             UserPage
         </div>
     );

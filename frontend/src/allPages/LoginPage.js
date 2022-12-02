@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {login} from '../allAPI/apis'
 import App from '../App';
+import { Auth } from '../sharedAPI/ContextAuth';
 
 class LoginPage extends React.Component {
+    static contextType = Auth;
  state = {
     username: null,
     password: null
@@ -18,13 +20,23 @@ class LoginPage extends React.Component {
     onClickLogin = async event => {
         event.preventDefault();
         const { username, password } = this.state;
+        const { logInSucces } = this.context;
         const creds = {
             username,
             password
         };
         try {
-            await login(creds);
+            const response= await login(creds);
             this.props.history.push('/')
+
+
+            const authState = {
+                username: username,
+                password: password,
+                mail: response.data.mail,
+                image: response.data.image
+            }
+            logInSucces(authState);
         } catch (apiError) {
             this.setState({
                 error: apiError.response.data.message
