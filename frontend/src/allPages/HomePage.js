@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SubmitPosts from '../Components/SubmitPosts';
 import TopBar from '../Components/TopBar';
+import LoginPage from './LoginPage';
 
 
 const HomePage = () => {
@@ -14,11 +15,11 @@ const HomePage = () => {
                 <div className='col'>
                     {userLoggedIn === true && <SubmitPosts/>}
                 </div>
-                {/* <div className='col-6 col-md-4'>
+                <div className='col-6 col-md-4'>
                     
                 {userLoggedIn === true && 'UserListWill Shown Here'}
 
-                </div> */}
+                </div>
 
             </div>
         </div>

@@ -8,6 +8,6 @@ export const login = creds => {
     return axios.post('/api/1.0/auth', {}, { auth: creds });
 };
 
-export const sharePosts = post => {
-    return axios.post('/api/1.0/posts', post)
+export const sharePosts = (post,postLink) => {
+    return axios.post('/api/1.0/posts', post, postLink)
 };
