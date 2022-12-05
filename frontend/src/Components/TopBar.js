@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import logo from '../logo/E.png'
 import { Link } from 'react-router-dom';
-import { Auth } from '../sharedAPI/ContextAuth';
+import { connect } from 'react-redux';
+import { createStore } from "redux";
+import {logOutSuccess} from '../FolderRedux/actionAuth'
+
+// import { Auth } from '../sharedAPI/ContextAuth';
 
 class TopBar extends Component {
    
+
     render() {
+
+   
         // const { userLoggedIn, username, logOutSucces } = this.props;
-        return (
-        <Auth.Consumer>
-            {
-                value=> {
-                    const { state, logOutSucces} = value;
-                    const { userLoggedIn, username} = state;
+ 
+                
+
+                    const {userLoggedIn, username , onLogOutSucces}  = this.props;
+                   
 
                     let logedInLinks = (
                         <ul class="navbar-nav ml-auto ">
@@ -24,19 +30,17 @@ class TopBar extends Component {
                         </li>
                     </ul>
                     );
-                    if(userLoggedIn == true) {
+                    if(userLoggedIn === true) {
                         logedInLinks = (
                         <ul class="navbar-nav ml-auto ">
             
-                            <li>
-                                <Link class="nav-link" to="/">Home</Link>
-                            </li>
+
                             <li>
                                 
                                 <Link class="nav-link" to={"/user/"+username}>{username}</Link>
                             </li>
                             <li>
-                                <Link class="nav-link" onClick={logOutSucces} to="/">Logout</Link>
+                                <Link class="nav-link" onClick={onLogOutSucces} to="/">Logout</Link>
                             </li>
                         </ul>
                         )
@@ -59,11 +63,24 @@ class TopBar extends Component {
                          </nav>
                         </div>
                     );
-                }}
-        </Auth.Consumer>
+                }
+            }
 
-        )
+  
+
+  const mapStateToProps = store => {
+    return {
+        userLoggedIn: store.userLoggedIn,
+        username: store.username
+    };
+  };
+
+  const mapDispatchToProps = dispatch => {
+    return {
+        onLogOutSucces: () => {
+            dispatch(logOutSuccess());
+        }
     }
-}
+  }
 
-export default TopBar;
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar);

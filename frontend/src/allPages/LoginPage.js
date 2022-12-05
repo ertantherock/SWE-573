@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {login} from '../allAPI/apis'
 import App from '../App';
-import { Auth } from '../sharedAPI/ContextAuth';
+import {connect} from 'react-redux';
+import {withApiProgress} from '../sharedAPI/ProgressApi'
+import {logInSucces } from '../FolderRedux/actionAuth'
+// import { Auth } from '../sharedAPI/ContextAuth';
 
 class LoginPage extends React.Component {
-    static contextType = Auth;
+    // static contextType = Auth;
  state = {
     username: null,
     password: null
@@ -20,7 +23,7 @@ class LoginPage extends React.Component {
     onClickLogin = async event => {
         event.preventDefault();
         const { username, password } = this.state;
-        const { logInSucces } = this.context;
+        // const logInSucces  = () => {}
         const creds = {
             username,
             password
@@ -31,12 +34,14 @@ class LoginPage extends React.Component {
 
 
             const authState = {
-                username: username,
-                password: password,
-                mail: response.data.mail,
-                image: response.data.image
+                ...response.data,
+                password
             }
-            logInSucces(authState);
+            // const action = {
+            //     type: 'login-success',
+            //     payload: authState
+            // };
+            this.props.logInSucces(authState)
         } catch (apiError) {
             this.setState({
                 error: apiError.response.data.message
@@ -73,4 +78,12 @@ class LoginPage extends React.Component {
     }
 }
 
-export default LoginPage;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logInSucces: function(authState) {
+           return dispatch(logInSucces(authState)) 
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withApiProgress(LoginPage,'/api/1.0/auth'));

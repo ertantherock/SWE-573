@@ -4,16 +4,17 @@ import LoginPage from './allPages/LoginPage';
 import HomePage from './allPages/HomePage';
 import TopBar from './Components/TopBar';
 import UserPage from './allPages/UserPage';
+import { connect, Connect } from 'react-redux';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import { Auth } from './sharedAPI/ContextAuth';
+// import { Auth } from './sharedAPI/ContextAuth';
 
 
 class App extends React.Component {
-  static contextType = Auth;
+  // static contextType = Auth;
 
 
   render() {
-    const userLoggedIn = this.context.state.userLoggedIn;
+    const userLoggedIn = false;
     const username = undefined;
     // const { userLoggedIn, username } = this.state;
 
@@ -40,4 +41,10 @@ class App extends React.Component {
   
 
 }
-export default App;
+const mapStateToProps = store => {
+  return {
+      userLoggedIn: store.userLoggedIn,
+      
+  };
+};
+export default connect(mapStateToProps)(App);
