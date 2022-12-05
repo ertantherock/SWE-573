@@ -21,26 +21,26 @@ class TopBar extends Component {
                    
 
                     let logedInLinks = (
-                        <ul class="navbar-nav ml-auto ">
+                        <ul className="navbar-nav ml-auto ">
                         <li > 
-                            <Link class="nav-link" to="/signup">Sign Up</Link>
+                            <Link className="nav-link" to="/signup">Sign Up</Link>
                         </li>
                         <li>
-                            <Link class="nav-link" to="/login">Login</Link>
+                            <Link className="nav-link" to="/login">Login</Link>
                         </li>
                     </ul>
                     );
                     if(userLoggedIn === true) {
                         logedInLinks = (
-                        <ul class="navbar-nav ml-auto ">
+                        <ul className="navbar-nav ml-auto ">
             
 
                             <li>
                                 
-                                <Link class="nav-link" to={"/user/"+username}>{username}</Link>
+                                <Link className="nav-link" to={"/user/"+username}>{username}</Link>
                             </li>
                             <li>
-                                <Link class="nav-link" onClick={onLogOutSucces} to="/">Logout</Link>
+                                <Link className="nav-link" onClick={onLogOutSucces} to="/">Logout</Link>
                             </li>
                         </ul>
                         )
@@ -48,10 +48,10 @@ class TopBar extends Component {
             
                     return (
                         <div className='navbar navbar-dark  bg-primary mb-2'>
-                            <nav class="navbar navbar-light container navbar-expand ">
+                            <nav className="navbar navbar-light container navbar-expand ">
                           
                             
-                            <Link class="navbar-brand align-self-start " to="/">
+                            <Link className="navbar-brand align-self-start " to="/">
                             <img src={logo} width="45" alt='Epocket Logo' />
                                 E Pocket
                             </Link>

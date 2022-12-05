@@ -35,9 +35,9 @@ const onClickSharePost = async () => {
 
         <div className='flex-fill'>
             
-            
+            <h1>Share Posts</h1>
             <label>Link</label>
-            <textarea type="text" class="form-control" placeholder='Put your link, if you have ' id="basic-url" aria-describedby="basic-addon3" rows={focused ? "3" : "1"} onFocus={() => setFocused(true)} onChange= {event => sharePosting2(event.target.value)} value={postLink}  />
+            <textarea type="text" className="form-control" placeholder='Put your link, if you have ' id="basic-url" aria-describedby="basic-addon3" rows={focused ? "3" : "1"} onFocus={() => setFocused(true)} onChange= {event => sharePosting2(event.target.value)} value={postLink}  />
             
 
             <label >Comment</label>

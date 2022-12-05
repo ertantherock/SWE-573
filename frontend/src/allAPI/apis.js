@@ -11,3 +11,7 @@ export const login = creds => {
 export const sharePosts = (post,postLink) => {
     return axios.post('/api/1.0/posts', post, postLink)
 };
+
+export const getPosts = () => {
+    return axios.get('/api/1.0/posts');
+}
