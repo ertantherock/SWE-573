@@ -1,6 +1,6 @@
 package com.ePocket.ws.user;
 import java.util.HashMap;
-
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -12,6 +12,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ePocket.ws.error.ApiError;
 import com.ePocket.ws.shared.ResponseGeneric;
+import com.ePocket.ws.shared.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 
@@ -82,6 +86,18 @@ public class UserController {
 		error.setValidationErrors(validationErrors);
 		return error;
 	}
+	
+	@GetMapping("/api/1.0/users")
+	@JsonView(Views.Base.class)
+	List<User> getUsers() {
+		return userService.getUsers();
+	}
+	
+	/*
+	 * @GetMapping("/api/1.0/users/{username}") UserVM getUser(@PathVariable String
+	 * username) { User user = userService.getByUsername(username); return new
+	 * UserVM(user); }
+	 */
 	
 	
 }

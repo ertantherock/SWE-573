@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import com.ePocket.ws.user.User;
+
 @Service
 public class PostService {
 	PostRepository postRepository;
@@ -17,6 +19,7 @@ public class PostService {
 
 	public void save(Post post) {
 		post.setTimeStampDate(new Date());
+		
 		postRepository.save(post);
 		
 	}

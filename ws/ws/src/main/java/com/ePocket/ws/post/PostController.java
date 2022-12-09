@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ePocket.ws.shared.ResponseGeneric;
 
+import com.ePocket.ws.user.User;
+
 @RestController
 public class PostController {
 	

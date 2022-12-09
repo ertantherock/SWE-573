@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.ePocket.ws.user.User;
+
 import lombok.Data;
 
 @Data
@@ -25,5 +27,7 @@ public class Post {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timeStampDate;
+	
+
 
 }
