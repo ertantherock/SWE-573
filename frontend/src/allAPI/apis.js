@@ -15,3 +15,7 @@ export const sharePosts = (post,postLink) => {
 export const getPosts = () => {
     return axios.get('/api/1.0/posts');
 }
+
+export const getUsers = () => {
+    return axios.get("/api/1.0/users");
+}

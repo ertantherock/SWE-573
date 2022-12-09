@@ -33,11 +33,15 @@ class TopBar extends Component {
                     if(userLoggedIn === true) {
                         logedInLinks = (
                         <ul className="navbar-nav ml-auto ">
+
+                            <li>                                
+                                <Link className="nav-link" to={"/allusers"}>All Users</Link>
+                            </li>
             
 
                             <li>
                                 
-                                <Link className="nav-link" to={"/user/"+username}>{username}</Link>
+                                <Link className="nav-link" to={"/user/"+username}>@{username}</Link>
                             </li>
                             <li>
                                 <Link className="nav-link" onClick={onLogOutSucces} to="/">Logout</Link>

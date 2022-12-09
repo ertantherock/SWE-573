@@ -4,6 +4,7 @@ import LoginPage from './allPages/LoginPage';
 import HomePage from './allPages/HomePage';
 import TopBar from './Components/TopBar';
 import UserPage from './allPages/UserPage';
+import AllUsers from './allPages/AllUsers'
 import { connect, Connect } from 'react-redux';
 import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 // import { Auth } from './sharedAPI/ContextAuth';
@@ -29,7 +30,9 @@ class App extends React.Component {
               return <LoginPage {...reactRouterProps} logInSucces ={this.logInSucces}/>
             }} />)}
             <Route path="/signup" component={UserSignupPage} />
+            <Route path="/allusers" component={AllUsers} />
             <Route path="/user/:username" component={UserPage} />
+            
             <Redirect to="/" />
           </Switch>
         </Router>
