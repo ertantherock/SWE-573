@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ePocket.ws.error.ApiError;
-import com.ePocket.ws.shared.Views;
+
 import com.ePocket.ws.user.User;
 import com.ePocket.ws.user.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -29,7 +29,7 @@ public class AuthController {
 	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@PostMapping("/api/1.0/auth")
-	@JsonView(Views.Base.class)
+
 	ResponseEntity<?> handleAuthentication(
 			@RequestHeader(name = "Authorization", required = false) String authorization) {
 		if (authorization == null) {

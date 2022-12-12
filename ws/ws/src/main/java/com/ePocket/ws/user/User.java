@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.ePocket.ws.shared.Views;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -28,7 +28,7 @@ public class User {
 	@NotNull
 	@Size(min = 4, max = 255)
 	@EssizUserNameAnnotation
-	@JsonView(Views.Base.class)
+
 	@Column(name="username")
 	private String username;
 	
@@ -43,7 +43,7 @@ public class User {
 	private String password;
 	
 	
-	@JsonView(Views.Base.class)
+	
 	private String image;
 	
 	

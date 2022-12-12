@@ -16,17 +16,14 @@ public class WsApplication {
 		SpringApplication.run(WsApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner createInitialUsers(UserService userService) {
-		return (args) -> {
-			User user = new User();
-			user.setUsername("kullanıcı1");
-			user.setMail("ertancank@gmail.com");
-			user.setPassword("sifre123");
-			userService.save(user);
-		};
-	}
+	/*
+	 * @Bean CommandLineRunner createInitialUsers(UserService userService) {
+	 * 
+	 * return (args) -> { User user = new User(); user.setUsername("kullanıcı1");
+	 * user.setMail("ertancank@gmail.com"); user.setPassword("sifre123");
+	 * userService.save(user); };
+	 * 
+	 * }
+	 */
 
-	}
-
-
+}

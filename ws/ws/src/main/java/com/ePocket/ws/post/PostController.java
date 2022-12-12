@@ -27,7 +27,7 @@ public class PostController {
 
 	}
 	@GetMapping("/api/1.0/posts")
-	Page<Post> getPosts(@PageableDefault(sort = "timeStampDate", direction = Direction.DESC) Pageable page){
+	Page<Post> getPosts(@PageableDefault(sort = "id", direction = Direction.DESC) Pageable page){
 		return postService.getPosts(page);
 	}
 
