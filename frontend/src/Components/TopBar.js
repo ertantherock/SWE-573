@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { createStore } from "redux";
 import {logOutSuccess} from '../FolderRedux/actionAuth'
 
+
 // import { Auth } from '../sharedAPI/ContextAuth';
 
 class TopBar extends Component {
@@ -34,6 +35,8 @@ class TopBar extends Component {
                         logedInLinks = (
                         <ul className="navbar-nav ml-auto ">
 
+                        
+
                             <li>                                
                                 <Link className="nav-link" to={"/allusers"}>All Users</Link>
                             </li>
@@ -53,7 +56,11 @@ class TopBar extends Component {
                     return (
                         <div className='navbar navbar-dark  bg-primary mb-2'>
                             <nav className="navbar navbar-light container navbar-expand ">
-                          
+
+                            <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                             
                             <Link className="navbar-brand align-self-start " to="/">
                             <img src={logo} width="45" alt='Epocket Logo' />

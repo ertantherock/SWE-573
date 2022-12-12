@@ -10,7 +10,7 @@ const PostFeed = () => {
 
 
     
-    const [postPage, setPostPage] = useState({ content: [], last:true })
+    const [postPage, setPostPage] = useState({ content: [], last:false })
 
     useEffect(() => {
         const loadPosts = async () => {

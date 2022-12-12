@@ -1,20 +1,36 @@
-import {createStore} from 'redux';
+import { legacy_createStore as createStore} from 'redux'
 import authRed from './authRed';
 
-const loggedInState = {
 
-    userLoggedIn: true,
-    username: 'ertankaya3',
-    mail: 'ertancank@gmail.com',
-    password: 'ertanertan',
-    image: null,
-    
-
-};
 
 
 const storeConfig = () => {
-    return createStore(authRed, loggedInState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    const userAuth = localStorage.getItem('user-auth');
+    
+    let persistentState = {
+        userLoggedIn: false,
+        username: undefined,
+        mail: undefined,
+        password: undefined,
+        image: undefined
+    };
+
+
+    if(userAuth) {
+        try {
+            persistentState= JSON.parse(userAuth)
+        } catch (error) {
+            
+        }
+       
+    }
+
+    const store=  createStore(authRed, persistentState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+    store.subscribe(() => {
+        localStorage.setItem('user-auth', JSON.stringify(store.getState()))
+    })
+    return store;
 }
 
 export default storeConfig;

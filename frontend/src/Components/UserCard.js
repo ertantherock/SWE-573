@@ -1,16 +1,47 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect, Connect } from 'react-redux';
+import defPicture from '../logo/profile.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 // import { Auth} from '../sharedAPI/ContextAuth';
 
 const UserCard = props => {
   const pathUsername = props.match.params.username;
   const loggedInUsername = props.username;
-  let message = 'You cannot edit';
-  if (pathUsername === loggedInUsername) {
-    message = 'You can edit';
+
+ 
+
+  const {user} = props;
+  const {username, mail, image} = user;
+  let imageSource = defPicture;
+  if (image) {
+    imageSource = image;
   }
-  return <div>{message}</div>;
+
+
+  return <div className='card'>
+    <div className='card-header'>
+    <img className="rounded-circle shadow" width="200" height="200" alt={`${username} profile`} src={imageSource} />
+    </div>
+      <div className='card-body text-center'>
+        
+        
+        <h1>{props.match.params.username}</h1>
+
+        <button className='btn btn-success'>
+          
+         Edit 
+        </button>
+        
+        <FontAwesomeIcon icon="faCoffee" > </FontAwesomeIcon>
+        
+       
+        
+      </div>
+
+
+  </div>;
 };
 
 // class UserCardContextWrapper extends React.Component {
@@ -21,11 +52,6 @@ const UserCard = props => {
 // }
 
 
-const mapStateToProps = store => {
-  return {
-      
-      username: store.username
-  };
-};
 
-export default connect(mapStateToProps)(withRouter(UserCard));
+
+export default (withRouter(UserCard));
