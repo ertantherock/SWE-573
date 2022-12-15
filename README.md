@@ -4,9 +4,10 @@
 <p>Every week this repo will be updated according to <b>class requirement.</b></p>
 <p>In the first week requirements: I have created new wiki page, created new issue and customized issue tags.</p>
 
-<p>V2</p>
+# <p> V2 of Application </p>
 
 <p>1.Signup and Login Pages not changed. Just added control mechanizms such as is user name used before for sign up? Is username or password secure enaugh etc.</p>
+
 <p>2.List of Users added to application. When user logged in, he/she can see them on All Users pane on the topbar.</p>
 
 ![image](https://user-images.githubusercontent.com/107481123/207957567-6db1bebb-daf9-4842-83ed-d3ebbcd2c6e9.png)
@@ -20,7 +21,7 @@
 ![image](https://user-images.githubusercontent.com/107481123/207958193-e5ab8308-4d8b-450a-810f-6600de8e7bfd.png)
 
 
-<p>V1</p>
+<p>V1 of Application</p>
 
 Sign Up Page with React:
 
