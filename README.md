@@ -4,6 +4,12 @@
 <p>Every week this repo will be updated according to <b>class requirement.</b></p>
 <p>In the first week requirements: I have created new wiki page, created new issue and customized issue tags.</p>
 
+# <p>Newest Update 15.12.2022: </p>
+### Application hasbeen builded with frontend and backend side. .Jar file has been created and this .Jar file dockerized.
+### After dockerization, I have pushed this docker file to Docker HUB.
+### After Pushing, I have deployed this  application on Azure platform. Also I have created Azure SQL Database and my database now online.
+### You can check my deployed application on https://epocketdeployed.salmonisland-c42dc852.canadacentral.azurecontainerapps.io/#/ 
+
 # <p> V2 of Application </p>
 
 <p>1.Signup and Login Pages not changed. Just added control mechanizms such as is user name used before for sign up? Is username or password secure enaugh etc.</p>
