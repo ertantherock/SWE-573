@@ -10,9 +10,13 @@
 <p>2.List of Users added to application. When user logged in, he/she can see them on All Users pane on the topbar.</p>
 
 ![image](https://user-images.githubusercontent.com/107481123/207957567-6db1bebb-daf9-4842-83ed-d3ebbcd2c6e9.png)
+
 <p>3.When user loged in, they can see their profiles when clicking on topbar @username.</p>
+
 ![image](https://user-images.githubusercontent.com/107481123/207957989-4ddae7d6-52ce-45c9-845e-fc717c60eb35.png)
+
 <p>4.When users at the homepage. They can share posts on the left and they can see posts on the right. When clicking on share posts, context area is getting bigger and share and cancel buttons shown up. Links are clickable and buttonized.</p>
+
 ![image](https://user-images.githubusercontent.com/107481123/207958193-e5ab8308-4d8b-450a-810f-6600de8e7bfd.png)
 
 
