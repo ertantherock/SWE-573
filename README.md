@@ -5,6 +5,7 @@
 <p>In the first week requirements: I have created new wiki page, created new issue and customized issue tags.</p>
 Sign Up Page with React:
 
+
 ![image](https://user-images.githubusercontent.com/107481123/200592941-09b9ea44-3e6c-42bd-b9a3-2cc77eb612ed.png)
 
 
@@ -15,3 +16,5 @@ Database Connection:
 Java Spring Boot for Sign Up:
 
 ![image](https://user-images.githubusercontent.com/107481123/200592710-c125ba82-a171-410a-bf9f-6aaddbf138d7.png)
+
+
