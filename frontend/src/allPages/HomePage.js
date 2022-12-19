@@ -4,6 +4,8 @@ import PostFeed from '../Components/PostFeed';
 import SubmitPosts from '../Components/SubmitPosts';
 import TopBar from '../Components/TopBar';
 import LoginPage from './LoginPage';
+import Welcome from "./WELCOME.gif";
+import Welcome2 from "./Welcome2.png";
 
 
 
@@ -15,17 +17,13 @@ const HomePage = () => {
         <div className='container'>
             <div className='row'>
                 <div className='col'>
+                    {userLoggedIn ? (<SubmitPosts/> ): <img height="auto" width="180%"  src={Welcome2} alt="my-gif" />}
                     
-                    {userLoggedIn === true && 
-                    ( <SubmitPosts/> )}
-
-
-                    
+                     
                 </div>
                 <div className='col'>
-                  
-                    {userLoggedIn === true && 
-                    ( <PostFeed/> )} 
+                {userLoggedIn ? (<PostFeed/>) : null}
+                 
   
                 </div>
 

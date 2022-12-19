@@ -1,46 +1,126 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect, Connect } from 'react-redux';
-import defPicture from '../logo/profile.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import DefaultProfileImage from './DefaultProfileImage';
+import Input from './Input';
+import { updateUser } from '../allAPI/apis'; 
+import { useEffect } from 'react';
+
+
 // import { Auth} from '../sharedAPI/ContextAuth';
 
 const UserCard = props => {
+  const [inEditMode, setInEditMode] = useState(false);
   const pathUsername = props.match.params.username;
   const loggedInUsername = props.username;
+  const [updatedUserName, setupdatedUserName] = useState();
+  const [user, setUser] = useState({});
+  const [newImage, setNewImage] = useState();
+
+  useEffect(() => {
+    setUser(props.user);
+  }, [props.user]);
 
  
 
-  const {user} = props;
-  const {username, mail, image} = user;
-  let imageSource = defPicture;
-  if (image) {
-    imageSource = image;
+useEffect(() => {
+  if(!inEditMode){
+    setupdatedUserName(undefined);
+    setNewImage(undefined)
+  } else {
+    setupdatedUserName(username)
   }
+  
+},[inEditMode])
 
+  
+  const {username,mail,  image} = user;
+
+
+  const onClickSave = async() => {
+    const body = {
+      username: updatedUserName,
+      image: newImage
+    }
+    try {
+      const response = await updateUser(username, body)
+      setInEditMode(false);
+      setUser(response.data)     
+      
+    } catch (error) {
+      
+    }
+    
+  }
+ 
+
+  const onChangeFile = (event) => {
+      const file = event.target.files[0];
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        setNewImage(fileReader.result);
+      }
+      fileReader.readAsDataURL(file);
+
+  }
 
   return <div className='card'>
     <div className='card-header'>
-    <img className="rounded-circle shadow" width="200" height="200" alt={`${username} profile`} src={imageSource} />
-    </div>
-      <div className='card-body text-center'>
+    <DefaultProfileImage  
+    className="rounded-circle shadow" 
+    width="200" height="200" 
+    alt={`${username} profile`} 
+    image = {image}
+    tempImage={newImage} />
+    
+    
+      
+    </div >
+    <div className='card-body text-center'>
+      
         
-        
-        <h1>{props.match.params.username}</h1>
-
-        <button className='btn btn-success'>
-          
-         Edit 
-        </button>
-        
-        <FontAwesomeIcon icon="faCoffee" > </FontAwesomeIcon>
+        {!inEditMode &&
+          (
+          <div>
+              <h1>
+                {pathUsername}
+              </h1>
+              <button className='btn btn-success' onClick={() => setInEditMode(true)} >
+                
+                Edit Profile
+              </button>
+              
+          </div>
+          )
+          }
+          {inEditMode && (
+            <div>
+              <Input 
+              onChange={(event) =>{setupdatedUserName(event.target.value)}} 
+              defaultValue={pathUsername} label ="Edit Profile"></Input>
+              <input type="file" onChange={onChangeFile}/>
+              
+              <div>
+                <button onClick={onClickSave}>
+                  Save
+                </button>
+                <button onClick={() => setInEditMode(false)}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+            
+          )}
         
        
         
-      </div>
+       
+        
+    </div>
+      
 
-
+    
   </div>;
 };
 
