@@ -7,4 +7,10 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="com.ePocket.ws.shared.ResponseGeneric"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="com.ePocket.ws.user.vm.VMUpdateUser"/>
+    <fullyQualifiedTypeName name="com.ePocket.ws.user.vm.VMUser"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
+    <fullyQualifiedTypeName name="javax.persistence.Lob"/>
 </qualifiedTypeNameHistroy>

@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\ePocket\ws"/>
 			<item value="C:\ePocket"/>
 		</list>
 		<list key="projectNameTemplate">

@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ePocket.ws.error.NotFound;
+import com.ePocket.ws.user.vm.VMUpdateUser;
 
 @Service // Service layer for users. Layered arc.
 public class UserService {
@@ -49,6 +50,18 @@ public class UserService {
 	
 	public Page<User> getUsers(Pageable page) {
 		return userRepository.findAll(page);
+	}
+
+
+
+	public User updateUser(String username, VMUpdateUser updatedUser) {
+		User inDB = getByUsername(username);
+		inDB.setUsername(updatedUser.getUsername());
+		if (updatedUser.getImage() != null) {
+			inDB.setImage(updatedUser.getImage());
+		}
+		return userRepository.save(inDB);
+		 
 	}
 	
 	
