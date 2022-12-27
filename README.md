@@ -4,11 +4,21 @@
 <p>Every week this repo will be updated according to <b>class requirement.</b></p>
 <p>In the first week requirements: I have created new wiki page, created new issue and customized issue tags.</p>
 
-# <p>Newest Update 15.12.2022: </p>
+# <p> Newest Update 27.12.2022: </p>
+### Application moved to another platform that is Google Cloud instead of Azure. Azure suspended my cloud account and due to this reason I have deployed E Pocket in Google Cloud with Virtual Machine Instance
+### You can check my deployed application on with new URL that http://34.170.4.216 . 
+
+# <p> Update 15.12.2022: </p>
 ### Application hasbeen builded with frontend and backend side. .Jar file has been created and this .Jar file dockerized.
 ### After dockerization, I have pushed this docker file to Docker HUB.
 ### After Pushing, I have deployed this  application on Azure platform. Also I have created Azure SQL Database and my database now online.
 ### You can check my deployed application on https://epocketdeployed.salmonisland-c42dc852.canadacentral.azurecontainerapps.io/#/ 
+
+# <p> V3 of Application New Feature Added </p>
+<p> With this relase, Users can upload their profile pictures at their userpage.</p>
+<p> Users can change theri usernames at their userpage.</p>
+<p> Landing page created. When user log out, they will see a picture instead of white page. </p>
+
 
 # <p> V2 of Application </p>
 
